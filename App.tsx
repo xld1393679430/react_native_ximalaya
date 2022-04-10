@@ -9,7 +9,7 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Config from 'react-native-config';
-import {TestSay} from './src/utils';
+import {TestSay} from '@/utils/index';
 
 TestSay();
 
@@ -24,7 +24,7 @@ const App = () => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <View>
-        <Text>1Hello world</Text>
+        <Text>12Hello world</Text>
         <Text>{Config.API_URL}</Text>
       </View>
     </SafeAreaView>
