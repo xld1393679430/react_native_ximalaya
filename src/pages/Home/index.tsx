@@ -1,12 +1,12 @@
 import React from 'react';
-import {Text, View, Button} from 'react-native';
+import {View} from 'react-native';
 import {RootStackNavigation} from '@/navigator/index';
 import {connect, ConnectedProps} from 'react-redux';
 import {RootState} from '@/models/index';
 import Carousel from './Carousel';
 
 const mapStateToProps = ({home, loading}: RootState) => ({
-  num: home.num,
+  carousels: home.carousels,
   loading: loading.effects['home/asyncAdd'],
 });
 
@@ -24,37 +24,18 @@ class Home extends React.Component<IProps> {
     navigation.navigate('Detail', {id: 100});
   };
 
-  handleAdd = () => {
+  componentDidMount() {
     const {dispatch} = this.props;
     dispatch({
-      type: 'home/add',
-      payload: {
-        num: 10,
-      },
+      type: 'home/fetchCarousel',
     });
-  };
-
-  handleAsyncAdd = () => {
-    const {dispatch} = this.props;
-    dispatch({
-      type: 'home/asyncAdd',
-      payload: {
-        num: 10,
-      },
-    });
-  };
+  }
 
   render() {
-    const {num, loading} = this.props;
-    console.log(this.props, 555);
+    const {carousels} = this.props;
     return (
       <View>
-        <Text>Home1234---{num}</Text>
-        <Text>{loading ? '正努力加载中' : ''}</Text>
-        <Button title="加1" onPress={this.handleAdd} />
-        <Button title="异步加1" onPress={this.handleAsyncAdd} />
-        <Button title="跳转到详情页面" onPress={this.handleNavigation} />
-        <Carousel />
+        <Carousel data={carousels} />
       </View>
     );
   }

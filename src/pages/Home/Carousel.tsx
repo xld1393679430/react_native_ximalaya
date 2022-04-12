@@ -7,49 +7,20 @@ import SnapCarousel, {
 import {viewportWidth, wp, hp} from '@/utils/index';
 import {StyleSheet, View} from 'react-native';
 
-const data = [
-  {
-    id: '990000201908045234',
-    image: 'http://39.105.213.120/images/7.jpg',
-    colors: ['#8bf279', '#f279ae'],
-  },
-  {
-    id: '360000199612094400',
-    image: 'http://39.105.213.120/images/25.jpg',
-    colors: ['#79d1f2', '#f2ef79'],
-  },
-  {
-    id: '350000198812115687',
-    image: 'http://39.105.213.120/images/31.jpg',
-    colors: ['#cb79f2', '#79f2a8'],
-  },
-  {
-    id: '430000197510096439',
-    image: 'http://39.105.213.120/images/57.jpg',
-    colors: ['#f28579', '#7990f2'],
-  },
-  {
-    id: '360000198608314103',
-    image: 'http://39.105.213.120/images/23.jpg',
-    colors: ['#b3f279', '#f279d7'],
-  },
-  {
-    id: '420000200008206658',
-    image: 'http://39.105.213.120/images/21.jpg',
-    colors: ['#79f2ea', '#f2c679'],
-  },
-];
-
 const sliderWidth = viewportWidth;
 const itemWidth = wp(90) + wp(2) * 2;
 
-class Carousel extends React.Component {
+interface IProps {
+  data: ICarousel[];
+}
+class Carousel extends React.Component<IProps> {
   state = {
     activeIndex: 0,
   };
 
   get pagination() {
     const {activeIndex} = this.state;
+    const {data} = this.props;
     return (
       <View style={styles.paginationWrapper}>
         <Pagination
@@ -70,7 +41,7 @@ class Carousel extends React.Component {
     });
   };
   renderItem = (
-    {item}: {item: any},
+    {item}: {item: ICarousel},
     parallaxProps?: AdditionalParallaxProps,
   ) => {
     return (
@@ -85,7 +56,7 @@ class Carousel extends React.Component {
   };
 
   render() {
-    console.log(wp(90), hp(26), 444);
+    const {data} = this.props;
     return (
       <View>
         <SnapCarousel
