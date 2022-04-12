@@ -4,6 +4,7 @@ import {RootStackNavigation} from '@/navigator/index';
 import {connect, ConnectedProps} from 'react-redux';
 import {RootState} from '@/models/index';
 import Carousel from './Carousel';
+import Guess from './Guess';
 
 const mapStateToProps = ({home, loading}: RootState) => ({
   carousels: home.carousels,
@@ -36,6 +37,7 @@ class Home extends React.Component<IProps> {
     return (
       <View>
         <Carousel data={carousels} />
+        <Guess />
       </View>
     );
   }
