@@ -6,6 +6,7 @@ import Found from '@/pages/Found';
 import Account from '@/pages/Account';
 import {RootStackNavigation, RootStackParamList} from '.';
 import {RouteProp, TabNavigationState} from '@react-navigation/native';
+import IconFont from '@/assets/iconfont/index';
 
 export type BottomTabParamList = {
   Home: undefined;
@@ -49,6 +50,7 @@ class BottomTabs extends React.Component<IProps> {
     return (
       <Tabs.Navigator
         screenOptions={() => ({
+          headerTitleAlign: 'center',
           tabBarActiveTintColor: 'tomato',
           tabBarInactiveTintColor: 'gray',
         })}>
@@ -58,6 +60,9 @@ class BottomTabs extends React.Component<IProps> {
           options={{
             headerTitle: '首页',
             tabBarLabel: '首页',
+            tabBarIcon: ({color, size}) => (
+              <IconFont name="icon-shouye1" size={size} color={color} />
+            ),
           }}
         />
         <Tabs.Screen
@@ -66,6 +71,9 @@ class BottomTabs extends React.Component<IProps> {
           options={{
             headerTitle: '我听',
             tabBarLabel: '我听',
+            tabBarIcon: ({color, size}) => (
+              <IconFont name="icon-erji" size={size} color={color} />
+            ),
           }}
         />
         <Tabs.Screen
@@ -74,6 +82,9 @@ class BottomTabs extends React.Component<IProps> {
           options={{
             headerTitle: '发现',
             tabBarLabel: '发现',
+            tabBarIcon: ({color, size}) => (
+              <IconFont name="icon-faxiantianchong" size={size} color={color} />
+            ),
           }}
         />
         <Tabs.Screen
@@ -82,6 +93,9 @@ class BottomTabs extends React.Component<IProps> {
           options={{
             headerTitle: '我的',
             tabBarLabel: '我的',
+            tabBarIcon: ({color, size}) => (
+              <IconFont name="icon-wodexiao" size={size} color={color} />
+            ),
           }}
         />
       </Tabs.Navigator>
