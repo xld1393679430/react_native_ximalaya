@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {Effect, Model} from 'dva-core-ts';
 import {Reducer} from 'redux';
+import CarouselsMockJson from '@/mock/carousels';
 
 const CAROUSEL_URL = '/mock/11/bear/carousel';
 
@@ -41,7 +42,8 @@ const homeModel: HomeModel = {
   },
   effects: {
     *fetchCarousel(_, {call, put}) {
-      const {data} = yield call(axios.get, CAROUSEL_URL);
+      // const {data} = yield call(axios.get, CAROUSEL_URL);
+      const data = CarouselsMockJson;
       yield put({
         type: 'setState',
         payload: {
