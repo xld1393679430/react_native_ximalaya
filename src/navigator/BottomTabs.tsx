@@ -1,15 +1,15 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Home from '@/pages/Home';
 import Listen from '@/pages/Listen';
 import Found from '@/pages/Found';
 import Account from '@/pages/Account';
 import {RootStackNavigation, RootStackParamList} from '.';
 import {RouteProp, TabNavigationState} from '@react-navigation/native';
 import IconFont from '@/assets/iconfont/index';
+import HomeTabs from './HomeTabs';
 
 export type BottomTabParamList = {
-  Home: undefined;
+  HomeTabs: undefined;
   Listen: undefined;
   Found: undefined;
   Account: undefined;
@@ -55,8 +55,8 @@ class BottomTabs extends React.Component<IProps> {
           tabBarInactiveTintColor: 'gray',
         })}>
         <Tabs.Screen
-          name="Home"
-          component={Home}
+          name="HomeTabs"
+          component={HomeTabs}
           options={{
             headerTitle: '首页',
             tabBarLabel: '首页',
