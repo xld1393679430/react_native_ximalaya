@@ -3,6 +3,7 @@ import {Text, View, Button} from 'react-native';
 import {RootStackNavigation} from '@/navigator/index';
 import {connect, ConnectedProps} from 'react-redux';
 import {RootState} from '@/models/index';
+import Carousel from './Carousel';
 
 const mapStateToProps = ({home, loading}: RootState) => ({
   num: home.num,
@@ -48,11 +49,12 @@ class Home extends React.Component<IProps> {
     console.log(this.props, 555);
     return (
       <View>
-        <Text>Home12---{num}</Text>
+        <Text>Home1234---{num}</Text>
         <Text>{loading ? '正努力加载中' : ''}</Text>
         <Button title="加1" onPress={this.handleAdd} />
         <Button title="异步加1" onPress={this.handleAsyncAdd} />
         <Button title="跳转到详情页面" onPress={this.handleNavigation} />
+        <Carousel />
       </View>
     );
   }
