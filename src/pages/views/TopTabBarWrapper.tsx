@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/material-top-tabs';
 import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 import Touchable from '@/components/Touchable';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface IProps extends MaterialTopTabBarProps {}
 
@@ -13,6 +14,7 @@ class TopTabBarWrapper extends React.Component<IProps> {
   render() {
     return (
       <View style={styles.container}>
+        {/* <LinearGradient colors={['#ccc', '#e2e2e2']} style={styles.gradient} /> */}
         <View style={styles.topBarView}>
           <View style={styles.tabBar}>
             <MaterialTopTabBar {...this.props} />
@@ -71,6 +73,10 @@ const styles = StyleSheet.create({
   },
   history: {
     marginLeft: 20,
+  },
+  gradient: {
+    ...StyleSheet.absoluteFillObject,
+    height: 260,
   },
 });
 
