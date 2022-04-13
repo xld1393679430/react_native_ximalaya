@@ -58,6 +58,7 @@ class BottomTabs extends React.Component<IProps> {
           name="HomeTabs"
           component={HomeTabs}
           options={{
+            headerShown: false,
             headerTitle: '首页',
             tabBarLabel: '首页',
             tabBarIcon: ({color, size}) => (
