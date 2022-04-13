@@ -45,7 +45,6 @@ class Guess extends React.Component<ModelState> {
 
   render() {
     const {guess} = this.props;
-    console.log(guess, 111);
     return (
       <View style={styles.container}>
         <View style={styles.header}>

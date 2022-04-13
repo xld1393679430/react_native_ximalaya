@@ -11,6 +11,11 @@ import LinearGradient from 'react-native-linear-gradient';
 interface IProps extends MaterialTopTabBarProps {}
 
 class TopTabBarWrapper extends React.Component<IProps> {
+  handleToCategory = () => {
+    const {navigation} = this.props;
+    navigation.navigate('Category');
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -19,7 +24,7 @@ class TopTabBarWrapper extends React.Component<IProps> {
           <View style={styles.tabBar}>
             <MaterialTopTabBar {...this.props} />
           </View>
-          <Touchable style={styles.categary}>
+          <Touchable style={styles.categary} onPress={this.handleToCategory}>
             <Text>分类</Text>
           </Touchable>
         </View>

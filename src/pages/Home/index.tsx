@@ -51,9 +51,7 @@ class Home extends React.Component<IProps, IState> {
     navigation.navigate('Detail', {id: 100});
   };
 
-  handleChannelItemPress = (data: IChannel) => {
-    console.log(data, 'data---');
-  };
+  handleChannelItemPress = (data: IChannel) => {};
 
   keyExtractor = (item: IChannel, index: number) => {
     return `${item.id}-${index}`;

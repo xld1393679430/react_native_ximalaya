@@ -1,4 +1,5 @@
 import React from 'react';
+import {Platform, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   CardStyleInterpolators,
@@ -8,7 +9,7 @@ import {
 } from '@react-navigation/stack';
 import BottomTabs from './BottomTabs';
 import Detail from '@/pages/Detail';
-import {Platform, StyleSheet} from 'react-native';
+import Category from '@/pages/Category';
 
 export type RootStackParamList = {
   BottomTabs: {
@@ -17,6 +18,7 @@ export type RootStackParamList = {
   Detail: {
     id: number;
   };
+  Category: undefined;
 };
 
 export type RootStackNavigation = StackNavigationProp<RootStackParamList>;
@@ -29,6 +31,7 @@ class Navigator extends React.Component {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
+            headerBackTitle: '上一页',
             headerTitleAlign: 'center',
             // 统一安卓 ios页面切换效果 strt
             headerStyleInterpolator: HeaderStyleInterpolators.forUIKit,
@@ -60,6 +63,11 @@ class Navigator extends React.Component {
             name="Detail"
             component={Detail}
             options={{headerTitle: '详情页'}}
+          />
+          <Stack.Screen
+            name="Category"
+            component={Category}
+            options={{headerTitle: '分类'}}
           />
         </Stack.Navigator>
       </NavigationContainer>
