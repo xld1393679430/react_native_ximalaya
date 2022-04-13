@@ -3,6 +3,7 @@ import {Effect, Model} from 'dva-core-ts';
 import {Reducer} from 'redux';
 import CarouselsMockJson from '@/mock/carousels';
 import GuessMockJson from '@/mock/guess';
+import {randomArray} from '@/utils/index';
 // 轮播图
 const CAROUSEL_URL = '/mock/11/bear/carousel';
 
@@ -56,7 +57,7 @@ const homeModel: HomeModel = {
   effects: {
     *fetchCarousel(_, {call, put}) {
       // const {data} = yield call(axios.get, CAROUSEL_URL);
-      const data = CarouselsMockJson;
+      const data = randomArray(CarouselsMockJson);
       yield put({
         type: 'setState',
         payload: {
@@ -66,7 +67,7 @@ const homeModel: HomeModel = {
     },
     *fetchGuess(_, {call, put}) {
       // const {data} = yield call(axios.get, GUESS_URL);
-      const data = GuessMockJson;
+      const data = randomArray(GuessMockJson);
       console.log(data, 7777);
       yield put({
         type: 'setState',

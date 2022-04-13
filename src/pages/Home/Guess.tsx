@@ -30,6 +30,10 @@ class Guess extends React.Component<ModelState> {
     Alert.alert('111');
   };
 
+  handelRefresh = () => {
+    this.fetch();
+  };
+
   renderItem = ({item}: {item: IGuess}) => {
     return (
       <Touchable style={styles.item} onPress={this.handleClick}>
@@ -41,25 +45,29 @@ class Guess extends React.Component<ModelState> {
 
   render() {
     const {guess} = this.props;
-    console.log(guess, 999991);
+    console.log(guess, 111);
     return (
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            <IconFont name="icon-xihuan" />
+            <IconFont name="icon-xihuan" size={14} />
             <Text style={styles.headerTitle}>猜你喜欢</Text>
           </View>
           <View style={styles.headerRight}>
             <Text style={styles.moreText}>更多</Text>
-            <IconFont name="icon-gengduo" />
+            <IconFont name="icon-gengduo" size={14} />
           </View>
         </View>
         <FlatList
-          style={{flexGrow: 0}}
+          style={styles.flatList}
           numColumns={3}
           data={guess}
           renderItem={this.renderItem}
         />
+        <Touchable onPress={this.handelRefresh} style={styles.changeGuess}>
+          <IconFont name="icon-huanyipi" size={14} color="red" />
+          <Text style={styles.guessText}>换一批</Text>
+        </Touchable>
       </View>
     );
   }
@@ -69,7 +77,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     borderRadius: 8,
-    margin: 16,
+    margin: 12,
   },
   item: {
     flex: 1,
@@ -87,6 +95,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 15,
+    marginBottom: 2,
     borderBottomColor: '#efefef',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
@@ -106,6 +115,16 @@ const styles = StyleSheet.create({
     marginRight: 5,
     color: '#6f6f6f',
   },
+  changeGuess: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
+  guessText: {
+    marginLeft: 5,
+  },
+  flatList: {},
 });
 
 export default connector(Guess);

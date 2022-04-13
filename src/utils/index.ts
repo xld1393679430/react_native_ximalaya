@@ -14,4 +14,10 @@ function hp(percentage: number) {
   return Math.round(value);
 }
 
-export {viewportWidth, viewportHeight, wp, hp};
+// 数据随机重新排序
+function randomArray(array: Array<any>) {
+  const _arrray = [...array];
+  return _arrray.sort(() => Math.random() - 0.5);
+}
+
+export {viewportWidth, viewportHeight, wp, hp, randomArray};
