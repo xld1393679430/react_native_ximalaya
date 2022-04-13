@@ -2,7 +2,7 @@ import axios from 'axios';
 import {Effect, Model} from 'dva-core-ts';
 import {Reducer} from 'redux';
 import CarouselsMockJson from '@/mock/carousels';
-
+import GuessMockJson from '@/mock/guess';
 // 轮播图
 const CAROUSEL_URL = '/mock/11/bear/carousel';
 
@@ -65,7 +65,8 @@ const homeModel: HomeModel = {
       });
     },
     *fetchGuess(_, {call, put}) {
-      const {data} = yield call(axios.get, GUESS_URL);
+      // const {data} = yield call(axios.get, GUESS_URL);
+      const data = GuessMockJson;
       console.log(data, 7777);
       yield put({
         type: 'setState',
