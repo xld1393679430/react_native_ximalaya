@@ -3,9 +3,9 @@ import {StyleSheet, Text, View} from 'react-native';
 import {viewportWidth} from '@/utils/index';
 import {ICategory} from '@/models/category';
 
-const parentWidth = viewportWidth - 10;
-const itemWidth = parentWidth / 4;
-
+export const parentWidth = viewportWidth - 10;
+export const itemWidth = parentWidth / 4;
+export const itemHeight = 48;
 interface Iprops {
   item: ICategory;
   isEdit: boolean;
@@ -34,7 +34,7 @@ class Item extends React.Component<Iprops> {
 const styles = StyleSheet.create({
   itemWrapper: {
     width: itemWidth,
-    height: 48,
+    height: itemHeight,
   },
   item: {
     flex: 1,
