@@ -6,15 +6,48 @@ import {
 import Home from '@/pages/Home';
 import {StyleSheet} from 'react-native';
 import TopTabBarWrapper from '@/pages/views/TopTabBarWrapper';
+import {RootState} from '../models';
+import {connect, ConnectedProps} from 'react-redux';
+import {ICategory} from '@/models/category';
 
-const Tab = createMaterialTopTabNavigator();
+type HomeParamList = {
+  [key: string]: undefined;
+};
 
-class HomeTabs extends React.Component {
+const Tab = createMaterialTopTabNavigator<HomeParamList>();
+
+const mapStateToProps = ({category}: RootState) => {
+  return {
+    myCategorys: category.myCategorys,
+  };
+};
+
+const connector = connect(mapStateToProps);
+
+type ModelState = ConnectedProps<typeof connector>;
+
+interface IProps extends ModelState {}
+
+class HomeTabs extends React.Component<IProps> {
   renderTabBar = (props: MaterialTopTabBarProps) => {
     return <TopTabBarWrapper {...props} />;
   };
 
+  renderScreen = (item: ICategory) => {
+    return (
+      <Tab.Screen
+        key={item.id}
+        name={item.id}
+        component={Home}
+        options={{
+          tabBarLabel: item.name,
+        }}
+      />
+    );
+  };
+
   render() {
+    const {myCategorys} = this.props;
     return (
       <Tab.Navigator
         tabBar={this.renderTabBar}
@@ -35,13 +68,7 @@ class HomeTabs extends React.Component {
           tabBarInactiveTintColor: '#333',
           tabBarActiveTintColor: '#f86442',
         }}>
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{
-            tabBarLabel: '推荐',
-          }}
-        />
+        {myCategorys.map(this.renderScreen)}
       </Tab.Navigator>
     );
   }
@@ -53,4 +80,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeTabs;
+export default connector(HomeTabs);
