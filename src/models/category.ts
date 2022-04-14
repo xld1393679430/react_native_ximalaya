@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Effect, Model, SubscriptionsMapObject} from 'dva-core-ts';
 import {Reducer} from 'redux';
 import {RootState} from '.';
+import {myCategorysMockJson, categorysMockJson} from '@/mock/categorys';
 
 const CATEGORY_URL = '/mock/11/bear/category';
 
@@ -102,8 +103,10 @@ const categoryModel: CategoryModel = {
     },
     asyncStorage() {
       storage.sync.categorys = async () => {
-        const data = await axios.get(CATEGORY_URL);
-        return data;
+        // const data = await axios.get(CATEGORY_URL);
+        // return data;
+
+        return categorysMockJson;
       };
       storage.sync.myCategorys = async () => {
         return null;

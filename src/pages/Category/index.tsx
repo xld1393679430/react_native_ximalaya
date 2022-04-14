@@ -72,7 +72,8 @@ class Category extends React.Component<IProps, IState> {
     const {isEdit} = this.props;
     const {myCategorys} = this.state;
     const disabled = fixedItems.includes(index);
-    if (disabled) {
+
+    if (disabled && selected) {
       return;
     }
     if (isEdit) {

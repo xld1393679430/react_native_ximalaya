@@ -2,7 +2,7 @@ import {create} from 'dva-core-ts';
 import models from '@/models/index';
 import createLoading from 'dva-loading-ts';
 // 1,创建实例
-const app = create();
+export const app = create();
 
 // 2，加载model对象
 models.forEach(model => {

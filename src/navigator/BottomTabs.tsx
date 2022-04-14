@@ -7,12 +7,14 @@ import {RootStackNavigation, RootStackParamList} from '.';
 import {RouteProp, TabNavigationState} from '@react-navigation/native';
 import IconFont from '@/assets/iconfont/index';
 import HomeTabs from './HomeTabs';
+import ClearStorage from '@/pages/ClearStorage';
 
 export type BottomTabParamList = {
   HomeTabs: undefined;
   Listen: undefined;
   Found: undefined;
   Account: undefined;
+  ClearStorage: undefined;
 };
 
 const Tabs = createBottomTabNavigator();
@@ -96,6 +98,18 @@ class BottomTabs extends React.Component<IProps> {
             tabBarLabel: '我的',
             tabBarIcon: ({color, size}) => (
               <IconFont name="icon-wodexiao" size={size} color={color} />
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="ClearStorage"
+          component={ClearStorage}
+          options={{
+            headerTitle: '清缓存',
+            tabBarLabel: '清缓存',
+            tabBarIcon: ({color, size}) => (
+              <IconFont name="icon-icon-faxian" size={size} color={color} />
             ),
           }}
         />
